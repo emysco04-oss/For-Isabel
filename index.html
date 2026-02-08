@@ -3,37 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isabel's Premium Doll Shop</title>
+    <title>Isabel's Premium ATM</title>
     <style>
-        body { background-color: #fce4ec; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; }
-        .shop-header { background: #ad1457; color: white; padding: 20px; border-radius: 15px; margin-bottom: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .doll-card { background: white; padding: 15px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .doll-img { width: 100%; border-radius: 10px; height: 200px; object-fit: cover; }
-        .price { color: #ad1457; font-weight: bold; font-size: 1.2rem; }
-        button { background: #f06292; border: none; padding: 10px 20px; color: white; border-radius: 5px; cursor: pointer; margin-top: 10px; }
-        button:hover { background: #ad1457; }
+        body { background: #1a1a1a; color: #ff85a2; font-family: 'Courier New', monospace; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        #atm-screen { background: #2d2d2d; border: 5px solid #ff85a2; border-radius: 20px; padding: 30px; width: 320px; box-shadow: 0 0 20px #ff85a2; text-align: center; }
+        .balance { font-size: 2rem; margin: 20px 0; color: #00ff41; text-shadow: 0 0 5px #00ff41; }
+        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        button { background: transparent; border: 1px solid #ff85a2; color: #ff85a2; padding: 10px; cursor: pointer; border-radius: 5px; font-size: 0.8rem; }
+        button:hover { background: #ff85a2; color: white; }
+        #message { margin-top: 20px; font-weight: bold; min-height: 40px; }
     </style>
 </head>
 <body>
 
-    <div class="shop-header">
-        <h1>Isabel's Virtual Doll Boutique</h1>
-        <p>Special Price: Everything is exactly 800k dols! 😂</p>
-    </div>
-
-    <div class="grid">
-        <div class="doll-card">
-            <img src="https://images.unsplash.com/photo-1559124849-369e06184081?auto=format&fit=crop&w=300" class="doll-img">
-            <h3>Vintage Charm Doll</h3>
-            <p class="price">800,000 Dols</p>
-            <button onclick="alert('Insufficient Funds! Please send 800k dols to proceed 😂')">Buy Now</button>
+    <div id="atm-screen">
+        <h3>ISABEL CORP. ATM</h3>
+        <p>Current Debt to Supplier:</p>
+        <div class="balance">800,000 DOLS</div>
+        
+        <div class="btn-grid">
+            <button onclick="update('Withdraw 1 Smile')">WITHDRAW SMILE</button>
+            <button onclick="update('Withdraw 1 Voice Note')">VOICE NOTE (LOCK)</button>
+            <button onclick="update('Pay 1 Hug')">PAY 1 HUG</button>
+            <button onclick="update('Mystery Gift')">SURPRISE</button>
         </div>
 
-        <div class="doll-card">
-            <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=300" class="doll-img">
-            <h3>Modern Fashionista</h3>
-            <p class="price">800,000 Dols</p>
+        <div id="message">Please select a transaction...</div>
+    </div>
+
+    <script>
+        function update(type) {
+            const msg = document.getElementById('message');
+            if(type === 'Withdraw 1 Smile') {
+                msg.innerText = "Transaction Successful: You just made me smile back through the screen. 😊";
+            } else if (type === 'Withdraw 1 Voice Note') {
+                msg.innerText = "Error: Voice notes cost 800k dols. Please insert more Joy to unlock. 🎙️";
+            } else if (type === 'Pay 1 Hug') {
+                msg.innerText = "HUG RECEIVED. Processing... Connection feels warmer now. ❤️";
+            } else {
+                msg.innerText = "SURPRISE: Check your WhatsApp for a 'Mi Lady' appreciation text. ✨";
+            }
+        }
+    </script>
+</body>
+</html>
             <button onclick="alert('Transaction Declined: Isabel is too expensive! 💅')">Buy Now</button>
         </div>
     </div>
